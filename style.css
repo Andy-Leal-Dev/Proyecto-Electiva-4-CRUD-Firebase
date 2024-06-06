@@ -88,7 +88,7 @@
 }
 .Book{
     width: 200px;
-    height: 200px;
+    height: 250px;
     border: 1px solid;
     border-radius: 15px;
     display: flex;
@@ -98,12 +98,20 @@
     align-items: center;
     gap: 10px;
 }
-.div-btn-book{
 
+
+.div-btn-book{
+    display: flex ;
+    gap: 10px;
 }
 
 .div-btn-book button{
-    
+    height: 30px;
+    width: 80px;
+    border: 1px solid;
+    border-radius: 12px;
+    background: transparent;
+    cursor: pointer;
 }
 .SectionClient{
     width: 100%;
