@@ -76,15 +76,21 @@
 }
 .div-input input{
     width: 240px;
+    height: 30px;
     border: none;
+    outline: none;
     background-color: transparent;
 }
 .div-Books{
-    width: 800px;
+    width: 700px;
     height: 600px;
     border: 1px solid;
     border-radius: 15px;
     padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    overflow-y: scroll;
 }
 .Book{
     width: 200px;
@@ -113,6 +119,69 @@
     background: transparent;
     cursor: pointer;
 }
+
+
+.div-update-Books{
+    position: fixed;
+    bottom: 25%;
+    left: 50%;
+    border: 2px solid;
+    border-radius: 15px;
+    padding: 20px 25px 3px 25px;
+    background: white;
+    color: black;
+    font-size: 10px;
+    z-index: 10000;
+    width: 360px;
+    height: 450px;
+    text-align: justify;
+    text-decoration: none;
+}
+.div-btn-exit{
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+}
+.div-btn-exit button{
+    width: 30px;
+    border: none;
+    background: none;
+    font-size: 20px;
+}
+.Update{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+}
+.div-Delete-Books{
+    position: fixed;
+    bottom: 40%;
+    left: 50%;
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 20px 25px 3px 25px;
+    background: white;
+    color: black;
+    font-size: 10px;
+    z-index: 10000;
+    width: 358px;
+    height: 200px;
+    text-align: justify;
+    text-decoration: none;
+}
+
+.div-delete{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+}
 .SectionClient{
     width: 100%;
     height: 70%;
@@ -122,7 +191,7 @@
     width: 100%;
     height: 70%;
 }
-
+.btn-Update-book,
 .btn-register-book{
     width: 200px;
     height: 40px;

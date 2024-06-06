@@ -21,19 +21,19 @@
             <h3>Registrar Libro</h3>
             <div class="div-form">
                <div class="div-input">
-                    <input type="text" placeholder="Nombre del Autor">
+                    <input type="text" placeholder="Nombre del Autor" id="NameAutor">
                </div>
                <div class="div-input">
-                    <input type="text" placeholder="Apellido del Autor">
+                    <input type="text" placeholder="Apellido del Autor" id="LastNameAutor">
                 </div>
                 <div class="div-input">
-                    <input type="text" placeholder="Nombre del Libro">
+                    <input type="text" placeholder="Nombre del Libro" id="NameBook">
                 </div>
                 <div class="div-input">
-                    <input type="text" placeholder="Editorial">
+                    <input type="text" placeholder="Editorial" id="Editorial">
                 </div>
                 <div class="div-input">
-                    <input type="date">
+                    <input type="date" id="DateBook">
                 </div>
             </div>
             <button class="btn-register-book">Registrar</button>
@@ -42,6 +42,44 @@
             
         </div>
 
+        <div class="div-update-Books" style="display:none;">
+            <div class="div-btn-exit">
+                <button id="btn-exit">X</button>
+            </div>
+            <div class="Update">
+                <div class="div-input">
+                    <input type="text" placeholder="Nombre del Autor" id="NameAutorUpdate">
+               </div>
+               <div class="div-input">
+                    <input type="text" placeholder="Apellido del Autor" id="LastNameAutorUpdate">
+                </div>
+                <div class="div-input">
+                    <input type="text" placeholder="Nombre del Libro" id="NameBookUpdate">
+                </div>
+                <div class="div-input">
+                    <input type="text" placeholder="Editorial" id="EditorialUpdate">
+                </div>
+                <div class="div-input">
+                    <input type="date" id="DateBookUpdate">
+                </div>
+           
+                    <button class="btn-Update-book ">Editar</button>
+            </div>
+        </div>
+
+
+        <div class="div-Delete-Books" style="display:none;">
+            <div class="div-btn-exit">
+                <button id="btn-exit-delete">X</button>
+            </div>
+            <div class="div-delete">
+                <h1>¿Estas seguro que quieres Borrar este libro?</h1>
+            <div class="div-btn-book">
+                <button>Cancelar</button>
+                <button class="btn-Delete-book">Eliminar</button>
+            </div>
+            </div>
+        </div>
     </section>
 
     <section class="SectionClient">
@@ -63,8 +101,8 @@
             <span id="DateBook"></span>
             <span id="Active"></span>
             <div class="div-btn-book">
-                <button>Editar</button>
-                <button>Eliminar</button>
+                <button id="btn-Update">Editar</button>
+                <button id="btn-Delete">Eliminar</button>
             </div>
         </div>
     </template>
