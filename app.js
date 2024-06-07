@@ -3,12 +3,12 @@ import {getFirestore,collection,doc,addDoc,getDocs,updateDoc,deleteDoc,} from "h
 
 const firebaseConfig = {
   apiKey: "",
-    authDomain: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: "",
-    measurementId: ""
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: "",
+  measurementId: ""
 };
 
 
@@ -17,7 +17,7 @@ const db = getFirestore(app);
 let idBook = "";
 let idClient = "";
 
-
+//Logica y Funciones Book
 document.querySelector("#Book").addEventListener("click",()=>{
   document.querySelector(".SectionBook").style.display = "flex";
   document.querySelector(".SectionClient").style.display = "none";
@@ -214,12 +214,12 @@ const getClients = async () => {
     clone.querySelector("#btn-Update").addEventListener("click", () => {
       document.querySelector(".div-update-Client").style.display = "block";
       idClient = doc.id;
-      console.log(idBook);
+      console.log(idClient);
     });
     clone.querySelector("#btn-Delete").addEventListener("click", () => {
       document.querySelector(".div-Delete-Client").style.display = "block";
       idClient = doc.id;
-      console.log(idBook);
+      console.log(idClient);
     });
 
     $fragmen.appendChild(clone);
@@ -237,7 +237,6 @@ getClients();
 document.querySelector("#btn-exit-client").addEventListener("click", () => {
   document.querySelector(".div-update-Client").style.display = "none";
 });
-
 document.querySelector("#btn-exit-client-d").addEventListener("click", () => {
   document.querySelector(".div-Delete-Client").style.display = "none";
 });
@@ -269,3 +268,55 @@ document.querySelector(".btn-register-Client").addEventListener("click", () => {
     setInterval("location.reload()", 3000);
   }
 });
+const updateClient = async (updateData) => {
+  const bookRef = doc(db, "Client", idClient);
+  await updateDoc(bookRef, updateData);
+  console.log("Client updated successfully!");
+};
+
+const deleteClient = async (ClientId) => {
+  const ClientRef = doc(db, "Client", ClientId);
+  await deleteDoc(ClientRef);
+  console.log("Client deleted successfully!");
+};
+document.querySelector(".btn-Update-Client").addEventListener("click", () => {
+  const NameClient = document.getElementById("NameClientUpdate").value.trim();
+  const LastNameClient = document.getElementById("LastNameClientUpdate").value.trim();
+  const CiClient = document.getElementById("CiClientUpdate").value.trim();
+  const AddressClient = document.getElementById("AddressClientUpdate").value.trim();
+  const DateClient = document.getElementById("DateClientUpdate").value.trim();
+
+  const updateData = {}; // Object to hold changes
+
+  if (NameClient) {
+    updateData.NameClient = NameAutor;
+  }
+  if (LastNameClient) {
+    updateData.LastNameClient = LastNameClient;
+  }
+  if (CiClient) {
+    updateData.CiClient = CiClient;
+  }
+  if (AddressClient) {
+    updateData.AddressClient = AddressClient;
+  }
+  if (DateClient) {
+    updateData.DateClient = DateClient;
+  }
+  if (Object.keys(updateData).length > 0) {
+    try {
+      updateClient(updateData);
+      setInterval("location.reload()", 3000);
+    } catch (error) {
+      console.error("Error updating book:", error);
+    }
+  } else {
+  }
+});
+
+document.querySelector(".btn-Delete-Client").addEventListener("click", () => {
+  deleteClient(idClient);
+  setInterval("location.reload()", 3000);
+});
+
+// Fin Logica y Funcione Cliente
