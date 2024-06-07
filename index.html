@@ -10,9 +10,9 @@
     <nav class="Nav-bar">
         <h2>Alquiler de libros</h2>
         <div class="div-btn">
-            <button type="button">Libros</button>
-            <button type="button">Clientes</button>
-            <button type="button">Alquilar Libros</button>
+            <button type="button" id="Book">Libros</button>
+            <button type="button" id="clients">Clientes</button>
+            <button type="button" id="reserve">Alquilar Libros</button>
         </div>
     </nav>
 
@@ -82,11 +82,82 @@
         </div>
     </section>
 
-    <section class="SectionClient">
+    <section class="SectionClient" style="display:none;">
+        <div class="Form-Client">
+            <h3>Registrar Cliente</h3>
+            <div class="div-form">
+               <div class="div-input">
+                    <input type="text" placeholder="Nombre del Cliente" id="NameClient">
+               </div>
+               <div class="div-input">
+                    <input type="text" placeholder="Apellido del Cliente" id="LastNameClient">
+                </div>
+                <div class="div-input">
+                    <input type="text" placeholder="Cedula del Cliente" id="CiClient">
+                </div>
+                <div class="div-input">
+                    <input type="text" placeholder="Direccion" id="AddressClient">
+                </div>
+                <div class="div-input">
+                    <input type="date" id="DateClient">
+                </div>
+            </div>
+            <button class="btn-register-Client">Registrar</button>
+        </div>
+        <div class="div-Client">
+            <div class="tabla">
+                <div class="encabezado">
+                  <div class="celda">Nombre</div>
+                  <div class="celda">Apellido</div>
+                  <div class="celda">Cedula</div>
+                  <div class="celda">F. Nacimiento</div>
+                  <div class="celda">Direccion</div>
+                  <div class="celda">Id. Libro</div>
+                  <div class="celda"></div>
+                </div>
+              </div>
+        </div>
 
+        <div class="div-update-Client" style="display:none;">
+            <div class="div-btn-exit">
+                <button id="btn-exit-client">X</button>
+            </div>
+            <div class="Update">
+                <div class="div-input">
+                    <input type="text" placeholder="Nombre del Cliente" id="NameClient">
+               </div>
+               <div class="div-input">
+                    <input type="text" placeholder="Apellido del Cliente" id="LastNameClient">
+                </div>
+                <div class="div-input">
+                    <input type="text" placeholder="Cedula del Cliente" id="CiClient">
+                </div>
+                <div class="div-input">
+                    <input type="text" placeholder="Direccion" id="AddressClient">
+                </div>
+                <div class="div-input">
+                    <input type="date" id="DateClient">
+                </div>
+                    <button class="btn-Update-book ">Editar</button>
+            </div>
+        </div>
+
+
+        <div class="div-Delete-Client" style="display:none;">
+            <div class="div-btn-exit">
+                <button id="btn-exit-client-d">X</button>
+            </div>
+            <div class="div-delete">
+                <h1>¿Estas seguro que quieres Borrar este Cliente?</h1>
+            <div class="div-btn-book">
+                <button class="btn-Cancela-Delete-book">Cancelar</button>
+                <button class="btn-Delete-book">Eliminar</button>
+            </div>
+            </div>
+        </div>
     </section>
 
-    <section class="SectionReserve">
+    <section class="SectionReserve" style="display:none;">
 
     </section>
 
@@ -105,6 +176,21 @@
                 <button id="btn-Delete">Eliminar</button>
             </div>
         </div>
+    </template>
+
+    <template id="template2">
+        <div class="fila" id="Fila">
+            <div class="celda" id="NameClient">Juan</div>
+            <div class="celda" id="LastNameClient">ramirez</div>
+            <div class="celda" id="CI-Client">3110778</div>
+            <div class="celda" id="DateClient">F. Nacimiento</div>
+            <div class="celda" id="AddresClient">Av. Jose Felix rivas</div>
+            <div class="celda" id="Idbook">#32214</div>
+            <div class="celda">
+                <button id="btn-Update">Editar</button>
+                <button id="btn-Delete">Eliminar</button>
+            </div>
+          </div>
     </template>
 
     <script type="module" src="app.js"></script>

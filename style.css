@@ -39,7 +39,7 @@
     align-items: center;
     gap: 20px;
 }
-
+.Form-Client,
 .Form-Books{
     width: 400px;
     height: 600px;
@@ -81,6 +81,13 @@
     outline: none;
     background-color: transparent;
 }
+.div-Client{
+    width: 700px;
+    height: 600px;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 20px;
+}
 .div-Books{
     width: 700px;
     height: 600px;
@@ -105,7 +112,6 @@
     gap: 10px;
 }
 
-
 .div-btn-book{
     display: flex ;
     gap: 10px;
@@ -119,8 +125,7 @@
     background: transparent;
     cursor: pointer;
 }
-
-
+.div-update-Client,
 .div-update-Books{
     position: fixed;
     bottom: 25%;
@@ -157,6 +162,7 @@
     align-items: center;
 
 }
+.div-Delete-Client,
 .div-Delete-Books{
     position: fixed;
     bottom: 40%;
@@ -185,12 +191,26 @@
 .SectionClient{
     width: 100%;
     height: 70%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .SectionReserve{
     width: 100%;
     height: 70%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
+
+.btn-register-Client,
 .btn-Update-book,
 .btn-register-book{
     width: 200px;
@@ -200,3 +220,24 @@
     background-color: transparent;
     cursor: pointer;
 }
+
+.tabla {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .encabezado {
+    display: flex;
+  }
+  
+  .fila {
+    display: flex;
+  }
+  
+  .celda {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+    overflow: hidden;
+  }
