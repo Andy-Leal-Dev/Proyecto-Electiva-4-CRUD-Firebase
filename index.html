@@ -12,7 +12,7 @@
         <div class="div-btn">
             <button type="button" id="Book">Libros</button>
             <button type="button" id="clients">Clientes</button>
-            <button type="button" id="reserve">Alquilar Libros</button>
+            <button type="button" id="Rent">Alquilar Libros</button>
         </div>
     </nav>
 
@@ -112,7 +112,6 @@
                   <div class="celda">Cedula</div>
                   <div class="celda">F. Nacimiento</div>
                   <div class="celda">Direccion</div>
-                  <div class="celda">Id. Libro</div>
                   <div class="celda"></div>
                 </div>
               </div>
@@ -157,8 +156,68 @@
         </div>
     </section>
 
-    <section class="SectionReserve" style="display:none;">
+    <section class="SectionRent" style="display:none;">
+        <div class="Form-Rent">
+            <h3>Registrar el Libro alquilado</h3>
+            <div class="div-form">
+               <div class="div-input">
+                    <input type="text" placeholder="Cedula del Cliente" id="CiClientRent">
+               </div>
+               <div class="div-input">
+                    <input type="text" placeholder="Codigo del Libro" id="CodeIdBookRent">
+                </div>
+                <label for="">Fecha de Inicio del Alquiler</label>
+                <div class="div-input">
+                    <input type="date" id="DateStartRent">
+                </div>
+                <label for="">Fecha de Fin del Alquiler</label>
+                <div class="div-input">
+                    <input type="date" id="DateEndRent">
+                </div>
+            </div>
+            <button class="btn-register-Rent">Registrar</button>
+        </div>
+        <div class="div-Rent">
+            
+        </div>
 
+        <div class="div-update-Rent" style="display:none;">
+            <div class="div-btn-exit">
+                <button id="btn-exit">X</button>
+            </div>
+            <div class="Update">
+                <div class="div-input">
+                    <input type="text" placeholder="Ceduladel Autor" id="CiClientRentUpdate">
+               </div>
+               <div class="div-input">
+                    <input type="text" placeholder="Codigo del Libro" id="CodeIdBookRentUpdate">
+                </div>
+                <span style="font-size: medium;">Fecha de Inicio del Alquiler</span>
+                <div class="div-input">
+                    <input type="date" id="DateStartRentUpdate">
+                </div>
+                <span style="font-size: medium;">Fecha de Fin del Alquiler</span>
+                <div class="div-input">
+                    <input type="date" id="DateEndRentUpdate">
+                </div>
+           
+                    <button class="btn-Update-Rent ">Editar</button>
+            </div>
+        </div>
+
+
+        <div class="div-Delete-rent" style="display:none;">
+            <div class="div-btn-exit">
+                <button id="btn-exit-delete">X</button>
+            </div>
+            <div class="div-delete">
+                <h1>¿Estas seguro que quieres Borrar este Alquiler?</h1>
+            <div class="div-btn-book">
+                <button>Cancelar</button>
+                <button class="btn-Delete-Rent">Eliminar</button>
+            </div>
+            </div>
+        </div>
     </section>
 
 
@@ -170,7 +229,6 @@
             <span id="NameAutor"></span>
             <span id="Editorial"></span>
             <span id="DateBook"></span>
-            <span id="Active"></span>
             <div class="div-btn-book">
                 <button id="btn-Update">Editar</button>
                 <button id="btn-Delete">Eliminar</button>
@@ -180,17 +238,30 @@
 
     <template id="template2">
         <div class="fila" id="Fila">
-            <div class="celda" id="NameClient">Juan</div>
-            <div class="celda" id="LastNameClient">ramirez</div>
-            <div class="celda" id="CI-Client">3110778</div>
-            <div class="celda" id="DateClient">F. Nacimiento</div>
-            <div class="celda" id="AddresClient">Av. Jose Felix rivas</div>
-            <div class="celda" id="Idbook">#32214</div>
+            <div class="celda" id="NameClient"></div>
+            <div class="celda" id="LastNameClient"></div>
+            <div class="celda" id="CI-Client"></div>
+            <div class="celda" id="DateClient"></div>
+            <div class="celda" id="AddresClient"></div>
             <div class="celda">
                 <button id="btn-Update">Editar</button>
                 <button id="btn-Delete">Eliminar</button>
             </div>
           </div>
+    </template>
+
+    <template id="template3">
+        <div class="Rent">
+            <span>Alquiler Activo</span>
+            <h2 id="CiClient"></h2>
+            <h3 id="IdBook"></h3>
+            <span id="DateStart"></span>
+            <span id="DateEnd"></span>
+            <div class="div-btn-book">
+                <button id="btn-Update">Editar</button>
+                <button id="btn-Delete">Eliminar</button>
+            </div>
+        </div>
     </template>
 
     <script type="module" src="app.js"></script>

@@ -16,22 +16,23 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 let idBook = "";
 let idClient = "";
+let idRent ="";
 
 //Logica y Funciones Book
 document.querySelector("#Book").addEventListener("click",()=>{
   document.querySelector(".SectionBook").style.display = "flex";
   document.querySelector(".SectionClient").style.display = "none";
-  document.querySelector(".SectionReserve").style.display = "none";
+  document.querySelector(".SectionRent").style.display = "none";
 })
 
 document.querySelector("#clients").addEventListener("click",()=>{
   document.querySelector(".SectionClient").style.display = "flex";
   document.querySelector(".SectionBook").style.display = "none";
-  document.querySelector(".SectionReserve").style.display = "none";
+  document.querySelector(".SectionRent").style.display = "none";
 })
 
-document.querySelector("#reserve").addEventListener("click",()=>{
-  document.querySelector(".SectionReserve").style.display = "flex";
+document.querySelector("#Rent").addEventListener("click",()=>{
+  document.querySelector(".SectionRent").style.display = "flex";
   document.querySelector(".SectionBook").style.display = "none";
   document.querySelector(".SectionClient").style.display = "none";
 })
@@ -42,7 +43,7 @@ const addBook = async (
   NameAutor,
   NameEditorial,
   DateBook,
-  ActiveBook
+
 ) => {
   const booksRef = collection(db, "Books");
   const newBook = {
@@ -51,7 +52,7 @@ const addBook = async (
     NameAutor,
     NameEditorial,
     DateBook,
-    ActiveBook,
+
   };
   await addDoc(booksRef, newBook);
   console.log("Book added successfully!");
@@ -75,9 +76,6 @@ const getBooks = async () => {
     clone.querySelector("#NameAutor").textContent = elemet.NameAutor;
     clone.querySelector("#DateBook").textContent = elemet.DateBook;
     clone.querySelector("#Editorial").textContent = elemet.NameEditorial;
-    clone.querySelector("#Active").textContent = elemet.ActiveBook
-      ? "Disponible"
-      : "Ocupado";
     clone.querySelector("#btn-Update").addEventListener("click", () => {
       document.querySelector(".div-update-Books").style.display = "block";
       idBook = doc.id;
@@ -126,7 +124,6 @@ document.querySelector(".btn-register-book").addEventListener("click", () => {
     console.log("Ingrese Los datos");
   } else {
     let nameAutor = `${NameAutor} ${LastNameAutor}`;
-    let active = true;
     let id = generarCodigo();
 
     addBook(id, NameBook, nameAutor, Editorial, DateBook, active);
@@ -210,7 +207,6 @@ const getClients = async () => {
     clone.querySelector("#CI-Client").textContent = elemet.CiClient;
     clone.querySelector("#DateClient").textContent = elemet.DateClient;
     clone.querySelector("#AddresClient").textContent = elemet.AddressClient;
-    clone.querySelector("#Idbook").textContent = `#${elemet.idBook}`;
     clone.querySelector("#btn-Update").addEventListener("click", () => {
       document.querySelector(".div-update-Client").style.display = "block";
       idClient = doc.id;
@@ -289,7 +285,7 @@ document.querySelector(".btn-Update-Client").addEventListener("click", () => {
   const updateData = {}; // Object to hold changes
 
   if (NameClient) {
-    updateData.NameClient = NameAutor;
+    updateData.NameClient = NameClient;
   }
   if (LastNameClient) {
     updateData.LastNameClient = LastNameClient;
@@ -320,3 +316,139 @@ document.querySelector(".btn-Delete-Client").addEventListener("click", () => {
 });
 
 // Fin Logica y Funcione Cliente
+
+// Logica y Funcione Cliente
+
+const addRent = async (
+  CiClientRent,
+  CodeIdBookRent,
+  DateStartRent,
+  DateEndRent
+) => {
+  const RentRef = collection(db, "Rents");
+  const newRent = {
+    CiClientRent,
+    CodeIdBookRent,
+    DateStartRent,
+    DateEndRent
+  };
+  await addDoc(RentRef, newRent);
+  console.log("Rent added successfully!");
+};
+
+const getRents = async () => {
+  const booksRef = collection(db, "Rents");
+  const querySnapshot = await getDocs(booksRef);
+  const contentMain = document.querySelector(`.div-Rent`);
+  const $template = document.querySelector("#template3");
+  let $fragmen = new DocumentFragment();
+
+  querySnapshot.forEach((doc) => {
+    const elemet = doc.data();
+    console.log(elemet);
+
+    const clone = $template.content.lastElementChild.cloneNode(true);
+    clone.querySelector("#Rent");
+    clone.querySelector("#CiClient").textContent = elemet.CiClientRent;
+    clone.querySelector("#IdBook").textContent = elemet.CodeIdBookRent;
+    clone.querySelector("#DateStart").textContent = elemet.DateStartRent;
+    clone.querySelector("#DateEnd").textContent = elemet.DateEndRent;
+   
+    clone.querySelector("#btn-Update").addEventListener("click", () => {
+      document.querySelector(".div-update-Rent").style.display = "block";
+      idRent = doc.id;
+      console.log(idRent);
+    });
+    clone.querySelector("#btn-Delete").addEventListener("click", () => {
+      document.querySelector(".div-Delete-rent").style.display = "block";
+      idRent = doc.id;
+      console.log(idRent);
+    });
+
+    $fragmen.appendChild(clone);
+  });
+
+  if (contentMain) {
+    contentMain.appendChild($fragmen);
+  } else {
+    document.body.appendChild($fragmen);
+  }
+};
+
+const updateRent = async (updateData) => {
+  console.log((db, "Rents", idRent));
+  const RentsRef = doc(db, "Rents", idRent);
+  console.log(RentsRef);
+  await updateDoc(RentsRef, updateData);
+  console.log("Book updated successfully!");
+};
+
+const deleteRent = async (RentId) => {
+  const bookRef = doc(db, "Rents",RentId);
+  await deleteDoc(bookRef);
+  console.log("Book deleted successfully!");
+};
+
+getRents();
+
+document.querySelector(".btn-register-Rent").addEventListener("click", () => {
+  const CiClientRent = document.getElementById("CiClientRent").value;
+  const CodeIdBookRent = document.getElementById("CodeIdBookRent").value;
+  const DateStartRent = document.getElementById("DateStartRent").value;
+  const DateEndRent = document.getElementById("DateEndRent").value;
+ 
+
+  if (!CiClientRent || !CodeIdBookRent || !DateEndRent || !DateStartRent) {
+    console.log("Ingrese Los datos");
+  } else {
+    addRent(CiClientRent,CodeIdBookRent,DateStartRent,DateEndRent);
+    setInterval("location.reload()", 3000);
+  }
+});
+
+document.querySelector("#btn-exit").addEventListener("click", () => {
+  document.querySelector(".div-update-Rent").style.display = "none";
+});
+
+document.querySelector("#btn-exit-delete").addEventListener("click", () => {
+  document.querySelector(".div-Delete-rent").style.display = "none";
+});
+
+document.querySelector(".btn-Update-Rent").addEventListener("click", () => {
+  const CiClientRent = document.getElementById("CiClientRentUpdate").value.trim();
+  const CodeIdBookRent = document.getElementById("CodeIdBookRentUpdate").value.trim();
+  const DateStartRent = document.getElementById("DateStartRentUpdate").value.trim();
+  const DateEndRent = document.getElementById("DateEndRentUpdate").value.trim();
+
+  const updateData = {}; // Object to hold changes
+
+  if (CiClientRent) {
+    updateData.CiClientRent = CiClientRent;
+  }
+  if (CodeIdBookRent) {
+    updateData.CodeIdBookRent = CodeIdBookRent;
+  }
+  if (DateStartRent) {
+    updateData.DateStartRent = DateStartRent;
+  }
+  if (DateEndRent) {
+    updateData.DateEndRent = DateEndRent;
+  }
+  if (Object.keys(updateData).length > 0) {
+    try {
+      updateRent(updateData);
+      setInterval("location.reload()", 3000);
+    } catch (error) {
+      console.error("Error updating book:", error);
+    }
+  } else {
+    console.log(updateData);
+  }
+
+  
+});
+
+document.querySelector(".btn-Delete-Rent").addEventListener("click", () => {
+  deleteRent(idRent);
+  setInterval("location.reload()", 3000);
+});
