@@ -2,13 +2,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import {getFirestore,collection,doc,addDoc,getDocs,updateDoc,deleteDoc,} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: "",
-  measurementId: ""
+  apiKey: "AIzaSyC1AahhmF5o4VBqb5iqBPPDTUYZG-P_WXc",
+  authDomain: "proyectouni-7faff.firebaseapp.com",
+  projectId: "proyectouni-7faff",
+  storageBucket: "proyectouni-7faff.appspot.com",
+  messagingSenderId: "669116950016",
+  appId: "1:669116950016:web:fdbe20d1560a9e8c161ae5",
+  measurementId: "G-MWTR4GEZWE"
 };
 
 
@@ -242,10 +242,10 @@ document.querySelector(".btn-Cancela-Delete-book").addEventListener("click", () 
 
 const addClient = async (NameClient,LastNameClient,CiClient,AddressClient,DateClient) => {
   const ClientRef = collection(db, "Client");
-  const newBook = {
+  const newClient = {
     NameClient,LastNameClient,CiClient,AddressClient,DateClient
   };
-  await addDoc(ClientRef, newBook);
+  await addDoc(ClientRef, newClient);
   console.log("Client added successfully!");
 };
 
@@ -265,8 +265,8 @@ document.querySelector(".btn-register-Client").addEventListener("click", () => {
   }
 });
 const updateClient = async (updateData) => {
-  const bookRef = doc(db, "Client", idClient);
-  await updateDoc(bookRef, updateData);
+  const ClientRef = doc(db, "Client", idClient);
+  await updateDoc(ClientRef, updateData);
   console.log("Client updated successfully!");
 };
 
@@ -337,8 +337,8 @@ const addRent = async (
 };
 
 const getRents = async () => {
-  const booksRef = collection(db, "Rents");
-  const querySnapshot = await getDocs(booksRef);
+  const RentsRef = collection(db, "Rents");
+  const querySnapshot = await getDocs(RentsRef);
   const contentMain = document.querySelector(`.div-Rent`);
   const $template = document.querySelector("#template3");
   let $fragmen = new DocumentFragment();
@@ -384,8 +384,8 @@ const updateRent = async (updateData) => {
 };
 
 const deleteRent = async (RentId) => {
-  const bookRef = doc(db, "Rents",RentId);
-  await deleteDoc(bookRef);
+  const ClientRef = doc(db, "Rents",RentId);
+  await deleteDoc(ClientRef);
   console.log("Book deleted successfully!");
 };
 
